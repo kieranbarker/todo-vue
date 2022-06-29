@@ -2,8 +2,14 @@
 export default {
   emits: ["edit-todo", "add-todo"],
   props: {
-    editing: Number,
-    toDos: Array,
+    editing: {
+      type: [Number, null],
+      required: true,
+    },
+    toDos: {
+      type: Array,
+      required: true,
+    },
   },
   computed: {
     inputValue() {

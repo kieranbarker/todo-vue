@@ -1,12 +1,14 @@
 <script>
 export default {
   emits: ["toggle-todo", "set-editing", "delete-todo"],
+
   props: {
     toDos: {
       type: Array,
       required: true,
     },
   },
+
   methods: {
     deleteToDo(name, index) {
       const message = `Are you sure you want to delete '${name}'?`;
@@ -29,7 +31,9 @@ export default {
         :checked="toDo.done"
         @change="$emit('toggle-todo', index)"
       />
+
       <label :for="`toDo-${index}`">{{ toDo.name }}</label>
+
       <button
         type="button"
         data-action="edit"
@@ -38,6 +42,7 @@ export default {
       >
         Edit
       </button>
+
       <button
         type="button"
         data-action="delete"

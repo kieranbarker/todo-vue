@@ -8,26 +8,31 @@ export default {
     Form,
     ToDoList,
   },
+
   data() {
     return {
       toDos: getStorage(),
       editing: null,
     };
   },
+
   methods: {
     addToDo(value) {
       const toDo = { name: value, done: false };
       this.toDos = [...this.toDos, toDo];
     },
+
     toggleToDo(index) {
       this.toDos = this.toDos.map((toDo, i) => {
         if (i !== index) return toDo;
         return { ...toDo, done: !toDo.done };
       });
     },
+
     setEditing(index) {
       this.editing = index;
     },
+
     editToDo(value) {
       this.toDos = this.toDos.map((toDo, index) => {
         if (index !== this.editing) return toDo;
@@ -35,11 +40,13 @@ export default {
       });
       this.setEditing(null);
     },
+
     deleteToDo(index) {
       this.editing = null;
       this.toDos = this.toDos.filter((toDo, i) => i !== index);
     },
   },
+
   watch: {
     toDos(newToDos) {
       setStorage(newToDos);
